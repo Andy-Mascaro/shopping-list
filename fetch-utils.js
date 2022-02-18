@@ -4,7 +4,7 @@ const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 export function getUser() {
-    return client.auth.session() && client.auth.session().user;
+    return client.auth.session();
 }
 
 export function checkAuth() {
@@ -15,7 +15,7 @@ export function checkAuth() {
 
 export function redirectIfLoggedIn() {
     if (getUser()) {
-        location.replace('./other-page');
+        location.replace('./items');
     }
 }
 
@@ -37,24 +37,24 @@ export async function logout() {
     return (window.location.href = '../');
 }
 
-export async function createList(list) {
-    const resp = await client.from('lists').insert({ list, complete: false, user_id: client.auth.user().id, })
+export async function createItem(items) {
+    const resp = await client.from('items').insert({ items, complete: false, user_id: client.auth.user().id, })
         .single();
     return checkError(resp);
 }
 
-export async function getLists() {
-    const resp = await client.from('lists').select().order('complete').match({ user_id: client.auth.user().id, });
+export async function getItems() {
+    const resp = await client.from('items').select().order('complete').match({ user_id: client.auth.user().id, });
     return checkError(resp);
 }
 
-export async function deleteAllLists() {
-    const resp = await client.from('lists').delete({ user_id: client.auth.user().id, });
+export async function deleteAllItems() {
+    const resp = await client.from('items').delete({ user_id: client.auth.user().id, });
     return checkError(resp);
 }
 
-export async function completeList(id) {
-    const resp = await client.from('lists').update({ complete: true }).match({ user_id: client.auth.user().id, id: id });
+export async function boughtItem(id) {
+    const resp = await client.from('items').update({ complete: true }).match({ user_id: client.auth.user().id, id: id });
     return checkError(resp);
 }
 
@@ -70,6 +70,3 @@ function checkError({ data, error }) {
 
 
 
-// function checkError({ data, error }) {
-//     return error ? console.error(error) : data;
-// }
