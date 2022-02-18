@@ -43,6 +43,11 @@ export async function createList(list) {
     return checkError(resp);
 }
 
+export async function getLists() {
+    const resp = await client.from('lists').select().order('complete').match({ user_id: client.auth.user().id, });
+    return checkError(resp);
+}
+
 export async function deleteAllLists() {
     const resp = await client.from('lists').delete({ user_id: client.auth.user().id, });
     return checkError(resp);
@@ -51,6 +56,10 @@ export async function deleteAllLists() {
 export async function completeList(id) {
     const resp = await client.from('lists').update({ complete: true }).match({user_id: client.auth.user().id, id: id });
     return checkError(resp);
+}
+
+function checkError({ data, error }) {
+    return error ? console.error(error) : data;
 }
 
 
