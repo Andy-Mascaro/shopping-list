@@ -5,13 +5,13 @@ checkAuth();
 const logoutButton = document.querySelector('#logout');
 const itemsEl = document.querySelector('#items');
 const itemForm = document.querySelector('.item-form');
-const deleteButton = document.querySelector('#delete-button');
+const deleteButton = document.querySelector('.delete-button');
 
 logoutButton.addEventListener('click', () => {
     logout();
 });
 
-itemForm.addEventListener('submit', async(e) => {
+itemForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const formData = new FormData(itemForm);
@@ -31,11 +31,8 @@ async function displayItems() {
     const items = await getItems();
     
     for (let item of items) {
-        
         const itemEl = renderItem(item);
-
-        itemEl.addEventListener('click', async() => {
-            
+        itemEl.addEventListener('click', async () => {
             await boughtItem(item.id);
             displayItems();
         });
@@ -45,7 +42,7 @@ async function displayItems() {
 
 }
 
-window.addEventListener('load', async() => {
+window.addEventListener('load', async () => {
     displayItems();
 });
 
@@ -54,8 +51,10 @@ logoutButton.addEventListener('click', () => {
 });
 
 
-deleteButton.addEventListener('click', async() => {
+deleteButton.addEventListener('click', async () => {
     await deleteAllItems();
+
+    displayItems();
 
 
 });

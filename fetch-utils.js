@@ -13,8 +13,8 @@ export function checkAuth() {
     if (!user) location.replace('../');
 }
 
-export function redirectIfLoggedIn() {
-    if (getUser()) {
+export async function redirectIfLoggedIn() {
+    if (await getUser()) {
         location.replace('./items');
     }
 }
@@ -49,7 +49,10 @@ export async function getItems() {
 }
 
 export async function deleteAllItems() {
-    const resp = await client.from('items').delete({ user_id: client.auth.user().id, });
+    const resp = await client
+        .from('items')
+        .delete()
+        .match({ user_id: client.auth.user().id, });
     return checkError(resp);
 }
 
