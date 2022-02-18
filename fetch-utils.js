@@ -54,7 +54,7 @@ export async function deleteAllLists() {
 }
 
 export async function completeList(id) {
-    const resp = await client.from('lists').update({ complete: true }).match({user_id: client.auth.user().id, id: id });
+    const resp = await client.from('lists').update({ complete: true }).match({ user_id: client.auth.user().id, id: id });
     return checkError(resp);
 }
 
