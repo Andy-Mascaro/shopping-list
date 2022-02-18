@@ -129,3 +129,9 @@ footer {
 .auth-container button {
     margin: 10px;
 }
+
+.complete {
+    text-decoration: line-through;
+    background-color: lightgreen;
+}
+
