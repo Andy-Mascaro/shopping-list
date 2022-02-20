@@ -1,0 +1,74 @@
+body {
+
+    background-image: url(../assets/items.png);
+    background-attachment: fixed;
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* background-image: url(../assets/items.png);  
+    background-repeat: no-repeat;  
+    background-position: 0% 0%;
+    background-size: 60% 300%; */
+   
+    /* background: url(../assets/items.png) no-repeat center center fixed; 
+    -webkit-background-size: 100%;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+   */
+font-family: 'Titillium Web', sans-serif;
+
+}
+
+main {
+
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin-bottom: calc(var(--footer-height));
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+
+
+header {
+display: flex;
+justify-content: flex-end;
+background-color: var(--color3);
+height: var(--header-height);
+box-shadow: var(--shadow);
+}
+
+
+#logout {
+position: fixed;
+right: 20px;
+top: 90px;
+}
+
+
+.complete {
+text-decoration: line-through;
+background-color: lightgreen;
+}
+
+.item-form{
+    position:relative;
+     left: -52px ;
+    top:-45px;
+}
+
+.delete-button{
+    position:relative;
+     left: -235px ;
+    top:-66px;
+}
+.items{
+    position:relative;
+     left: -150px ;
+    top:2px;
+}
+
