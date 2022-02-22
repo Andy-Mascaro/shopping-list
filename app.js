@@ -8,7 +8,7 @@ const signUpForm = document.getElementById('sign-up');
 const signUpEmail = document.getElementById('sign-up-email');
 const signUpPassword = document.getElementById('sign-up-password');
 
-// if user currently logged in, redirect
+
 redirectIfLoggedIn();
 
 signUpForm.addEventListener('submit', async (event) => {
@@ -22,7 +22,7 @@ signUpForm.addEventListener('submit', async (event) => {
     }
 });
 
-signInForm.addEventListener('submit', async (event) => {
+signInForm.addEventListener('submit', async (event)=> {
     event.preventDefault();
     const user = await signInUser(signInEmail.value, signInPassword.value);
 

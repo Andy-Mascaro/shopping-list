@@ -7,26 +7,32 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles/reset.css">
-    <link rel="stylesheet" href="../styles/style.css">
-    <link rel="stylesheet" href="../styles/home.css">
+   
+    <link rel="stylesheet" href="../styles/items.css">
+    
     <title>Document</title>
 </head>
 
 <body>
     <header>
         <div class="gutter-right logo">
-            <img src="../assets/big-logo.png" />
+            <h3>Grocery List</h3>
         </div>
-    </header>    
-    <button id="logout">Logout</button>
-    <main>
-        <h1>You are logged in!</h1>
+    </header>
+    <main class="item-main">     
+        <button id="logout">Logout</button>
+        <form class="item-form">
+            <input name="item" required />
+            <button>Add item</button>
+        </form>
+        <button class="delete-button">Delete all items</button>
+        <ul id="items"></ul>
+        
     </main>
     <footer>
-        <div class="copy gutter-right">&copy; 2021 Alchemy Code Lab</div>
+       
     </footer>
-    <script type="module" src="./other-page.js"></script>
+    <script type="module" src="./items.js"></script>
 </body>
 
 </html>
